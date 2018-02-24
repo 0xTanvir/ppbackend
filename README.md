@@ -1,12 +1,12 @@
-# UIU programmers
-A platform for UIU programmers.
+# Programmers Playground
+A platform for programmers to easy their programming experience..
 
 ## What is it?
-UP (UIU programmers) is a platform where UIU programmers can track programming contest path
+Programmers Playground is a platform where programmers can track their programming path
 
 ## Before commit please make sure to check this
 
-### gometalinter
+### check gometalinter to your working package
 ```
 gometalinter \
             --vendor \
@@ -18,7 +18,7 @@ gometalinter \
 
 ### import
 - first go core packages
-- second up packages
+- second pp packages
 - third vendor packages
 
 each separated by a new line
@@ -27,7 +27,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/0xTanvir/up/cfg"
+	"github.com/0xTanvir/pp/cfg"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

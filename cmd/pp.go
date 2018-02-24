@@ -5,18 +5,18 @@ import (
 	"os"
 	"strings"
 
-	"github.com/0xTanvir/up/cfg"
+	"github.com/0xTanvir/pp/cfg"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
-// UpCmd is responsible for config loading and bootstrapping.
-var UpCmd = &cobra.Command{
-	Use:   "up",
-	Short: "A platform for UIU programmers",
-	Long:  "up is the main command, used to build uiu programmer application.",
+// PpCmd is responsible for config loading and bootstrapping.
+var PpCmd = &cobra.Command{
+	Use:   "pp",
+	Short: "A platform for programmers",
+	Long:  "pp is the main command, used to build programmers playground application.",
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
@@ -24,7 +24,7 @@ var UpCmd = &cobra.Command{
 func Execute() {
 	AddCommands()
 
-	if err := UpCmd.Execute(); err != nil {
+	if err := PpCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
@@ -49,12 +49,13 @@ var (
 
 // AddCommands adds child commands to the root command UpCmd.
 func AddCommands() {
-	UpCmd.AddCommand(versionCmd)
+	PpCmd.AddCommand(versionCmd)
+	PpCmd.AddCommand(runCmd)
 }
 
 // init initializes flags.
 func init() {
-	flags := UpCmd.PersistentFlags()
+	flags := PpCmd.PersistentFlags()
 	flags.StringVar(&cfgName, "cfg-name", "development", "config file name without path and extension")
 	flags.StringVar(&cfgPaths, "cfg-paths", "./etc", "paths where we search config split them by ','")
 	flags.BoolVar(&getVersion, "version", false, "build information")
@@ -73,14 +74,14 @@ func initConfig() {
 	}
 
 	// ENV variables allow easy configuration from docker
-	viper.SetEnvPrefix("UP")
+	viper.SetEnvPrefix("PP")
 	viper.AutomaticEnv()
 
 	// We can overrule the config name with an ENV variable
 	// For docker we may be used production.yaml with
 	// different configuration
-	if len(os.Getenv("UP_CFG_NAME")) > 0 {
-		cfgName = os.Getenv("UP_CFG_NAME")
+	if len(os.Getenv("PP_CFG_NAME")) > 0 {
+		cfgName = os.Getenv("PP_CFG_NAME")
 	}
 
 	// Now we load config with viper

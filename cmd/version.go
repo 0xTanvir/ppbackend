@@ -8,15 +8,15 @@ import (
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Print the version number of UP",
-	Long:  "All software has versions. This is UP's.",
+	Short: "Print the version number of PP",
+	Long:  "All software has versions. This is PP's.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		printUpVersion()
+		printPpVersion()
 		return nil
 	},
 }
 
-// printUpVersion will be used to print the up's version
-func printUpVersion() {
-	fmt.Println("UP a uiu programmers platform v0.1")
+// printPpVersion will be used to print the pp's version
+func printPpVersion() {
+	fmt.Println("Programmers Playground v0.1")
 }

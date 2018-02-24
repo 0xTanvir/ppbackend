@@ -1,6 +1,6 @@
 package main
 
-import "github.com/0xTanvir/up/cmd"
+import "github.com/0xTanvir/pp/cmd"
 
 func main() {
 	//Execution start point

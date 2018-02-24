@@ -11,7 +11,7 @@ func init() {
 	// Allow config via environment variables
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-	viper.SetEnvPrefix("up")
+	viper.SetEnvPrefix("pp")
 
 	// Server settings
 	viper.SetDefault("port", 3030)
@@ -25,4 +25,14 @@ func init() {
 	viper.SetDefault("cors.allow.headers", []string{"Origin", "Authorization", "Content-Length", "Content-Type", "Accept", "Accept-Language"})
 	viper.SetDefault("cors.expose.headers", []string{"Content-Length", "Content-Type"})
 	viper.SetDefault("cors.maxage", 12*time.Hour)
+
+	// log settings.
+	// level can be ERROR|WARNING|INFO|DEBUG.
+	viper.SetDefault("log.level", "ERROR")
+	viper.SetDefault("log.ginrus", true)
+
+	// MongoDB settings.
+	// URI in format 'mongodb://USER:PASSWg@HOST:PORT,HOST:PORT/DBNAME"'.
+	viper.SetDefault("db.uri", "mongodb://localhost/TEST")
+	viper.SetDefault("db.tls.enable", false)
 }
