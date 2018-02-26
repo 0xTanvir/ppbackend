@@ -4,7 +4,9 @@ import (
 	"os"
 	"time"
 
+	"github.com/0xTanvir/pp/contest"
 	"github.com/0xTanvir/pp/db"
+	"github.com/0xTanvir/pp/home"
 	"github.com/0xTanvir/pp/server"
 	"github.com/0xTanvir/pp/users"
 
@@ -41,14 +43,17 @@ var runCmd = &cobra.Command{
 			engine.Use(ginrus.Ginrus(logrus.StandardLogger(), time.RFC3339, true))
 		}
 
-		// initialize all controller with their service
+		// Initialize all available controller with their service
 		controllers := &server.Controllers{
-			User: &users.Controller{UserService: &users.Service{DB: dbc}},
+			User:    &users.Controller{UserService: &users.Service{DB: dbc}},
+			Home:    &home.Controller{HomeService: &home.Service{DB: dbc}},
+			Contest: &contest.Controller{ContestService: &contest.Service{DB: dbc}},
 		}
 
 		server := &server.Server{
 			Engine:      engine,
-			Controllers: controllers}
+			Controllers: controllers,
+		}
 
 		if err := server.Run(); err != nil {
 			logger.Error(err)

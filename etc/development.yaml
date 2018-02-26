@@ -3,3 +3,7 @@ host: "0.0.0.0"
 post: "3030"
 db:
   uri: "mongodb://localhost:27017/pp-development"
+judge:
+  host: "vjudge.net"
+  username: "just_take_it"
+  password: "Just4Test"

@@ -35,4 +35,9 @@ func init() {
 	// URI in format 'mongodb://USER:PASSWg@HOST:PORT,HOST:PORT/DBNAME"'.
 	viper.SetDefault("db.uri", "mongodb://localhost/TEST")
 	viper.SetDefault("db.tls.enable", false)
+
+	// Virtual judge settings
+	viper.SetDefault("judge.host", "vjudge.net")
+	viper.SetDefault("judge.username", "just_take_it")
+	viper.SetDefault("judge.password", "Just4Test")
 }

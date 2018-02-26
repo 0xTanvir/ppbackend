@@ -3,15 +3,10 @@ package server
 import (
 	"fmt"
 
-	"github.com/0xTanvir/pp/users"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
-
-type Controllers struct {
-	User *users.Controller
-}
 
 // Server handles API requests.
 type Server struct {
@@ -43,11 +38,47 @@ func (s *Server) Run() error {
 	// Install Version Middleware
 	// s.Engine.Use(s.IncludeVersion())
 
+	// ============================================================
 	// API endpoints
-	// Account registration (non-authenticated)
+
+	s.Engine.GET("") //Render ui for user
+
+	// Non-authenticated route
 	join := s.Engine.Group("/join")
 	{
-		join.GET("", s.Controllers.User.New)
+		join.GET("") //Render ui for user
+		join.POST("", s.Controllers.User.New)
+	}
+
+	auth := s.Engine.Group("/auth")
+	{
+		auth.GET("/login") //Render ui for user
+		auth.POST("/login")
+		auth.GET("/refresh")
+
+		// Password management group
+		password := auth.Group("/password")
+		{
+			password.GET("/reset") //Render ui for user
+			password.POST("/reset")
+			password.POST("/set")
+		}
+	}
+
+	// Authenticated route
+	//TODO this route should be used a ReqAuthUser middleware
+	account := s.Engine.Group("/account")
+	{
+		account.GET("") //Render ui for user
+		account.POST("")
+		account.GET("/:id")
+		account.PUT("/:id")
+		account.DELETE("/:id")
+	}
+
+	contest := s.Engine.Group("/contest")
+	{
+		contest.POST("", s.Controllers.Contest.New)
 	}
 
 	return s.Engine.Run(fmt.Sprintf("%v:%v", viper.GetString("host"), viper.GetString("port")))
