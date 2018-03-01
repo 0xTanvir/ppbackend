@@ -21,12 +21,18 @@ func (c *Controller) New(ctx *gin.Context) {
 		return
 	}
 
-	cr, err := c.ContestService.Create(ctstInfo.ID)
+	if c.ContestService.IsVIDExist(ctstInfo.VID) {
+		ctx.JSON(http.StatusBadRequest,
+			gin.H{"error": "A contest with this vid already exist."})
+		return
+	}
+
+	id, err := c.ContestService.Create(ctstInfo)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError,
 			gin.H{"error": err.Error()})
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, cr)
+	ctx.JSON(http.StatusCreated, gin.H{"id": id.Hex()})
 }
