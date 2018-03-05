@@ -2,12 +2,14 @@ package contest
 
 import "gopkg.in/mgo.v2/bson"
 
+// CtstInfo contains string parameters of a contest
 type CtstInfo struct {
 	Remarks  string `json:"remarks"`
 	Password string `json:"password"`
 	VID      string `json:"vid" binding:"required"`
 }
 
+// Submission is the struct for contest submission
 type Submission struct {
 	Username string `json:"username"`
 	Problem  int    `json:"problem"`
@@ -15,6 +17,7 @@ type Submission struct {
 	Time     int    `json:"time"`
 }
 
+// Ctst is the main data model for contest for our db
 type Ctst struct {
 	CtstInfo    `bson:",inline"`
 	ID          bson.ObjectId `bson:"_id" json:"id"`
@@ -24,6 +27,7 @@ type Ctst struct {
 	Submissions []Submission  `json:"submissions"`
 }
 
+// CtstResponse contains vjudge response from vjudge
 type CtstResponse struct {
 	Submissions  [][]int             `json:"submissions"`
 	Participants map[string][]string `json:"participants"`
@@ -31,4 +35,11 @@ type CtstResponse struct {
 	Begin        int64               `json:"begin"`
 	Length       int                 `json:"length"` // millisecond
 	ID           int                 `json:"id"`
+}
+
+// QueryFilter contains the query string parameters of a search request
+type QueryFilter struct {
+	Query    string `form:"q"`
+	Page     int    `form:"page"`
+	PageSize int    `form:"size"`
 }

@@ -2,6 +2,7 @@ package contest
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
@@ -24,20 +25,23 @@ type Service struct {
 	DB *db.DB
 }
 
-// IsVIDExist checks is that vjudge id already exist in our database
-func (s *Service) IsVIDExist(vid string) bool {
+// exist check existence of that query.
+func (s *Service) exist(query bson.M) bool {
 	session := s.DB.Clone()
 	defer session.Close()
 	session.SetSafe(&mgo.Safe{})
 
-	var ctst Ctst
-
 	collection := session.DB("").C(contestCollection)
-	// Todo can be make it efficient without insert or skip that ctst
-	err := collection.Find(bson.M{"vid": vid}).One(&ctst)
+	err := collection.Find(query).Select(nil).One(nil)
 	return err == nil
 }
 
+// IsVIDExist checks is that vjudge id already exist in our database
+func (s *Service) IsVIDExist(vid string) bool {
+	return s.exist(bson.M{"vid": vid})
+}
+
+// Create a new contest
 func (s *Service) Create(ctstInfo CtstInfo) (*bson.ObjectId, error) {
 	// Convert string to integer for check
 	id, err := strconv.Atoi(ctstInfo.VID)
@@ -67,6 +71,101 @@ func (s *Service) Create(ctstInfo CtstInfo) (*bson.ObjectId, error) {
 	}
 
 	return &contestData.ID, collection.Insert(contestData)
+}
+
+// Get an Contest by id from the database
+func (s *Service) Get(id string) (*Ctst, error) {
+	if !bson.IsObjectIdHex(id) {
+		return nil, errors.New("invalid id")
+	}
+
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	collection := session.DB("").C(contestCollection)
+	var contest Ctst
+
+	err := collection.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&contest)
+	if err != nil {
+		return nil, err
+	}
+	return &contest, err
+}
+
+// Update an contest by id
+func (s *Service) Update(id string, ctst *Ctst) error {
+	if !bson.IsObjectIdHex(id) {
+		return errors.New("invalid id")
+	}
+
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	// Todo when an vid get updates then it will again scrap from vjudge
+	collection := session.DB("").C(contestCollection)
+	return collection.Update(bson.M{
+		"_id": bson.ObjectIdHex(id)},
+		bson.M{
+			"$set": bson.M{
+				"remarks":     ctst.Remarks,
+				"password":    ctst.Password,
+				"vid":         ctst.VID,
+				"name":        ctst.Name,
+				"begin":       ctst.Begin,
+				"length":      ctst.Length,
+				"submissions": ctst.Submissions,
+			},
+		})
+
+}
+
+// Remove a contest by id
+func (s *Service) Remove(id string) error {
+	if !bson.IsObjectIdHex(id) {
+		return errors.New("invalid id")
+	}
+
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	collection := session.DB("").C(contestCollection)
+	return collection.Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+}
+
+// Find searches the database for a list of products
+func (s *Service) Find(qf QueryFilter) ([]*Ctst, error) {
+	var filter = bson.M{}
+
+	// Perform full text search on collection
+	if len(qf.Query) > 0 {
+		filter["q"] = qf.Query
+	}
+	// Todo add more filter depend on search
+
+	// Calculate how many documents we need to skip
+	skip := (qf.Page - 1) * qf.PageSize
+
+	return s.find(filter, skip, qf.PageSize)
+}
+
+// find searches the database for one or more products
+func (s *Service) find(filter bson.M, skip, limit int) ([]*Ctst, error) {
+
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	var results []*Ctst
+	collection := session.DB("").C(contestCollection)
+	err := collection.Find(filter).Skip(skip).Limit(limit).All(&results)
+	if err != nil {
+		return nil, err
+	}
+
+	return results, err
 }
 
 // getCtstInfo gets the contest info from vjudge.
@@ -138,4 +237,13 @@ func (s *Service) refineSubmissions(vjudgeContest *CtstResponse) *[]Submission {
 		}
 	}
 	return &submissions
+}
+
+// IsExist check if an organization id exists
+func (s *Service) IsExist(id string) bool {
+	if !bson.IsObjectIdHex(id) {
+		return false
+	}
+
+	return s.exist(bson.M{"_id": bson.ObjectIdHex(id)})
 }
