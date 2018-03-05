@@ -12,6 +12,8 @@ import (
 
 	"github.com/0xTanvir/pp/db"
 
+	"time"
+
 	"github.com/spf13/viper"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -133,6 +135,27 @@ func (s *Service) Remove(id string) error {
 
 	collection := session.DB("").C(contestCollection)
 	return collection.Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+}
+
+// GetUpcomingContest gets the Upcoming Contest
+func (s *Service) GetUpcomingContest() ([]*Ctst, error) {
+	var filter = bson.M{}
+
+	// {key:{$gt:value}}
+	filter["begin"] = bson.M{"$gt": time.Now().Unix()}
+
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	var results []*Ctst
+	collection := session.DB("").C(contestCollection)
+	err := collection.Find(filter).All(&results)
+	if err != nil {
+		return nil, err
+	}
+
+	return results, err
 }
 
 // Find searches the database for a list of products

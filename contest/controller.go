@@ -114,3 +114,13 @@ func (c *Controller) Find(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, result)
 }
+
+func (c *Controller) GetUpcomingContest(ctx *gin.Context) {
+	results, err := c.ContestService.GetUpcomingContest()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, results)
+}
