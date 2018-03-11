@@ -8,5 +8,5 @@ type Service struct {
 
 // GetUI
 func (r *Service) GetUI() string {
-	return "Here it will render ui for users."
+	return "Yes, Programmer's Playground back-end is running"
 }

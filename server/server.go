@@ -41,7 +41,7 @@ func (s *Server) Run() error {
 	// ============================================================
 	// API endpoints
 
-	s.Engine.GET("") //Render ui for user
+	s.Engine.GET("", s.Controllers.Home.New) //Render ui for user
 
 	// Non-authenticated route
 	join := s.Engine.Group("/join")
