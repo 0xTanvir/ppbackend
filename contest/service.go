@@ -9,10 +9,9 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/0xTanvir/pp/db"
-
-	"time"
 
 	"github.com/spf13/viper"
 	"gopkg.in/mgo.v2"
@@ -22,7 +21,7 @@ import (
 const scheme = "https"
 const contestCollection = "contests"
 
-// Service all logic functionality of Account
+// Service all logic functionality of contest
 type Service struct {
 	DB *db.DB
 }

@@ -1,8 +1,16 @@
 # Programmers Playground
-A platform for programmers to easy their programming experience..
+A platform for programmers to easy their programming journey..
 
-## What is it?
-Programmers Playground is a platform where programmers can track their programming path
+## Getting started
+```bash
+./bootstrap
+```
+
+## Run
+```bash
+cd $GOPATH/src/github.com/0xTanvir/pp
+go get . && pp run
+```
 
 ## Before commit please make sure to check this
 

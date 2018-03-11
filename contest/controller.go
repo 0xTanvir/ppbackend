@@ -115,6 +115,8 @@ func (c *Controller) Find(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, result)
 }
 
+// GetUpcomingContest gather all upcoming contest rom db
+// @Router /contest [get]
 func (c *Controller) GetUpcomingContest(ctx *gin.Context) {
 	results, err := c.ContestService.GetUpcomingContest()
 	if err != nil {
