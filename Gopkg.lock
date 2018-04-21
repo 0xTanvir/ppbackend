@@ -15,9 +15,21 @@
 
 [[projects]]
   branch = "master"
+<<<<<<< HEAD
   name = "github.com/gin-gonic/contrib"
   packages = ["ginrus"]
   revision = "dccbb4a462e965297e21372a9ad3ea05e0df3e5f"
+=======
+  name = "github.com/gin-contrib/sse"
+  packages = ["."]
+  revision = "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/gin-gonic/contrib"
+  packages = ["ginrus"]
+  revision = "9b830a15f6abcf9e160f47ee01fc00691cc1981a"
+>>>>>>> develop
 
 [[projects]]
   name = "github.com/gin-gonic/gin"
@@ -26,13 +38,22 @@
     "binding",
     "render"
   ]
+<<<<<<< HEAD
   revision = "e2212d40c62a98b388a5eb48ecbdcf88534688ba"
   version = "v1.1.4"
+=======
+  revision = "d459835d2b077e44f7c9b453505ee29881d5d12d"
+  version = "v1.2"
+>>>>>>> develop
 
 [[projects]]
   name = "github.com/golang/protobuf"
   packages = ["proto"]
+<<<<<<< HEAD
   revision = "2402d76f3d41f928c7902a765dfc872356dd3aad"
+=======
+  revision = "5a0f697c9ed9d68fef0116532c6e05cfeae00e55"
+>>>>>>> develop
 
 [[projects]]
   branch = "master"
@@ -41,6 +62,10 @@
     ".",
     "hcl/ast",
     "hcl/parser",
+<<<<<<< HEAD
+=======
+    "hcl/printer",
+>>>>>>> develop
     "hcl/scanner",
     "hcl/strconv",
     "hcl/token",
@@ -48,7 +73,11 @@
     "json/scanner",
     "json/token"
   ]
+<<<<<<< HEAD
   revision = "23c074d0eceb2b8a5bfdbb271ab780cde70f05a8"
+=======
+  revision = "ef8a98b0bbce4a65b5aa4c368430a80ddc533168"
+>>>>>>> develop
 
 [[projects]]
   name = "github.com/inconshreveable/mousetrap"
@@ -63,6 +92,7 @@
   version = "v1.7.6"
 
 [[projects]]
+<<<<<<< HEAD
   branch = "master"
   name = "github.com/manucorporat/sse"
   packages = ["."]
@@ -73,6 +103,11 @@
   packages = ["."]
   revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
   version = "v0.0.3"
+=======
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "57fdcb988a5c543893cc61bce354a6e24ab70022"
+>>>>>>> develop
 
 [[projects]]
   branch = "master"
@@ -98,8 +133,13 @@
     ".",
     "mem"
   ]
+<<<<<<< HEAD
   revision = "bb8f1927f2a9d3ab41c9340aa034f6b803f4359c"
   version = "v1.0.2"
+=======
+  revision = "63644898a8da0bc22138abf860edaf5277b6102e"
+  version = "v1.1.0"
+>>>>>>> develop
 
 [[projects]]
   name = "github.com/spf13/cast"
@@ -110,8 +150,13 @@
 [[projects]]
   name = "github.com/spf13/cobra"
   packages = ["."]
+<<<<<<< HEAD
   revision = "7b2c5ac9fc04fc5efafb60700713d4fa609b777b"
   version = "v0.0.1"
+=======
+  revision = "a1f051bc3eba734da4772d60e2d677f47cf93ef4"
+  version = "v0.0.2"
+>>>>>>> develop
 
 [[projects]]
   branch = "master"
@@ -122,25 +167,44 @@
 [[projects]]
   name = "github.com/spf13/pflag"
   packages = ["."]
+<<<<<<< HEAD
   revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
   version = "v1.0.0"
+=======
+  revision = "583c0c0531f06d5278b7d917446061adc344b5cd"
+  version = "v1.0.1"
+>>>>>>> develop
 
 [[projects]]
   name = "github.com/spf13/viper"
   packages = ["."]
+<<<<<<< HEAD
   revision = "25b30aa063fc18e48662b86996252eabdcf2f0c7"
   version = "v1.0.0"
+=======
+  revision = "b5e8006cbee93ec955a89ab31e0e3ce3204f3736"
+  version = "v1.0.2"
+
+[[projects]]
+  name = "github.com/ugorji/go"
+  packages = ["codec"]
+  revision = "c88ee250d0221a57af388746f5cf03768c21d6e2"
+>>>>>>> develop
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
+<<<<<<< HEAD
   revision = "21652f85b0fdddb6c2b6b77a5beca5c5a908174a"
 
 [[projects]]
   name = "golang.org/x/net"
   packages = ["context"]
   revision = "f315505cf3349909cdf013ea56690da34e96a451"
+=======
+  revision = "e73bf333ef8920dbb52ad18d4bd38ad9d9bc76d7"
+>>>>>>> develop
 
 [[projects]]
   branch = "master"
@@ -149,7 +213,11 @@
     "unix",
     "windows"
   ]
+<<<<<<< HEAD
   revision = "89ac7f292d17a339edab4de8efcba5d8672ff661"
+=======
+  revision = "79b0c6888797020a994db17c8510466c72fe75d9"
+>>>>>>> develop
 
 [[projects]]
   name = "golang.org/x/text"
@@ -167,8 +235,13 @@
 [[projects]]
   name = "gopkg.in/go-playground/validator.v8"
   packages = ["."]
+<<<<<<< HEAD
   revision = "c193cecd124b5cc722d7ee5538e945bdb3348435"
   version = "v8.15.1"
+=======
+  revision = "5f57d2222ad794d0dffb07e664ea05e2ee07d60c"
+  version = "v8.18.1"
+>>>>>>> develop
 
 [[projects]]
   branch = "v2"
@@ -185,12 +258,20 @@
 [[projects]]
   name = "gopkg.in/yaml.v2"
   packages = ["."]
+<<<<<<< HEAD
   revision = "7f97868eec74b32b0982dd158a51a446d1da7eb5"
   version = "v2.1.1"
+=======
+  revision = "a5b47d31c556af34a302ce5d659e6fea44d90de0"
+>>>>>>> develop
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
+<<<<<<< HEAD
   inputs-digest = "46956011ec9bb637226ea947f461fad50ef02287d0b1d2999989bc6082b42a42"
+=======
+  inputs-digest = "329a0ae517810333884f99f13c4e8232aa6253906e4a08ee9decdbb8a74a668b"
+>>>>>>> develop
   solver-name = "gps-cdcl"
   solver-version = 1
