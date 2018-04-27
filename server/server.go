@@ -41,19 +41,26 @@ func (s *Server) Run() error {
 	// ============================================================
 	// API endpoints
 
-	s.Engine.GET("", s.Controllers.Home.New) //Render ui for user
+	s.Engine.GET("", s.Controllers.Home.GetHomeUI) //Render ui for user
 
-	// Non-authenticated route
+	// -----------Non-authenticated route------------
+
+	// join is used for sign up or regestation
 	join := s.Engine.Group("/join")
 	{
-		join.GET("") //Render ui for user
+		join.GET("", s.Controllers.Home.GetRegistationUI) //Render ui for user
 		join.POST("", s.Controllers.User.New)
+	}
+
+	// login is used for sign in
+	login := s.Engine.Group("/login")
+	{
+		login.GET("")
+		login.POST("")
 	}
 
 	auth := s.Engine.Group("/auth")
 	{
-		auth.GET("/login") //Render ui for user
-		auth.POST("/login")
 		auth.GET("/refresh")
 
 		// Password management group
@@ -79,9 +86,9 @@ func (s *Server) Run() error {
 	contest := s.Engine.Group("/contest")
 	{
 		contest.POST("", s.Controllers.Contest.New)
-		contest.GET("/:id",s.Controllers.Contest.Get)
-		contest.PUT("/:id",s.Controllers.Contest.Update)
-		contest.DELETE("/:id",s.Controllers.Contest.Delete)
+		contest.GET("/:id", s.Controllers.Contest.Get)
+		contest.PUT("/:id", s.Controllers.Contest.Update)
+		contest.DELETE("/:id", s.Controllers.Contest.Delete)
 	}
 
 	return s.Engine.Run(fmt.Sprintf("%v:%v", viper.GetString("host"), viper.GetString("port")))
