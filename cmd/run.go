@@ -43,6 +43,12 @@ var runCmd = &cobra.Command{
 			engine.Use(ginrus.Ginrus(logrus.StandardLogger(), time.RFC3339, true))
 		}
 
+		// Load the template to our engine
+		engine.LoadHTMLGlob("templates/**/*.html")
+
+		// Load static file from directory
+		engine.Static("/public","./public")
+
 		// Initialize all available controller with their service
 		controllers := &server.Controllers{
 			User:    &users.Controller{UserService: &users.Service{DB: dbc}},
