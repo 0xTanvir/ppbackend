@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Welcome to I am on my own.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>IAmOnMyOwn</title>
+    <title>Auth</title>
 
     <link rel="stylesheet" href="../../public/css/material.min.css">
     <script src="../../public/js/material.min.js"></script>
@@ -50,12 +50,12 @@
                 <div class="mdl-cell--12-col mdl-layout-title"><h2 class="mdl-typography--font-light">Create Your Account</h2></div>
                 <div class="mdl-grid">
                     <div class="mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="first_name">
+                        <input class="mdl-textfield__input" type="text" id="firstname">
                         <label class="mdl-textfield__label" for="first_name" >First Name*</label>
                     </div>
                     <div class="mdl-layout-spacer"></div>
                     <div class="mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="last_name">
+                        <input class="mdl-textfield__input" type="text" id="lastname">
                         <label class="mdl-textfield__label" for="last_name" >Last Name*</label>
                     </div>
                 </div>
@@ -65,7 +65,6 @@
                     <label class="mdl-textfield__label" for="email" >Email*</label>
                     <span class="mdl-textfield__error">Email is not valid!</span>
                 </div>
-
 
                 <div class="mdl-grid">
                     <div class="mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -81,8 +80,68 @@
                     </div>
                 </div>
 
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="contactno">
+                    <label class="mdl-textfield__label" for="contactno" >Contact No*</label>
+                    <span class="mdl-textfield__error">Contact No is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="vjudge">
+                    <label class="mdl-textfield__label" for="vjudge" >VJudge ID*</label>
+                    <span class="mdl-textfield__error">VJudge ID is not valid!</span>
+                </div>
+                
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="uva">
+                    <label class="mdl-textfield__label" for="uva" >UVA ID</label>
+                    <span class="mdl-textfield__error">UVA ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="cf">
+                    <label class="mdl-textfield__label" for="cf" >Codeforces ID</label>
+                    <span class="mdl-textfield__error">Codeforces ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="hr">
+                    <label class="mdl-textfield__label" for="hr" >Hackerrank ID</label>
+                    <span class="mdl-textfield__error">Hackerrank ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="cc">
+                    <label class="mdl-textfield__label" for="cc" >Codechef ID</label>
+                    <span class="mdl-textfield__error">Codechef ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="timus">
+                    <label class="mdl-textfield__label" for="timus" >Timus ID</label>
+                    <span class="mdl-textfield__error">Timus ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="tc">
+                    <label class="mdl-textfield__label" for="tc" >Topcoder ID</label>
+                    <span class="mdl-textfield__error">Topcoder ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="urij">
+                    <label class="mdl-textfield__label" for="urij" >URI ID</label>
+                    <span class="mdl-textfield__error">URI ID is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="lo">
+                    <label class="mdl-textfield__label" for="lo" >LightOj ID</label>
+                    <span class="mdl-textfield__error">LightOj ID is not valid!</span>
+                </div>
+
                 <div class="btn-sign-up">
-                    <button class="mdl-shadow--8dp mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    <button class="mdl-shadow--8dp mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btn-sign-up">
                         Sign Up
                     </button>
                 </div>
@@ -117,8 +176,9 @@
                 </div>
 
             </section>
+            
 
-            <form action="/signin" method="post">
+            <form action="/signin" method="POST">
                 <section class="mdl-grid mdl-layout__tab-panel" id="fixed-tab-2">
 
                     <div class="mdl-cell--12-col mdl-layout-title"><h2 class="mdl-typography--font-light">Log Into Your Account</h2></div>
@@ -183,4 +243,7 @@
 
 
 </body>
+
+<script src="../../public/js/jquery.js"></script>
+<script src="../../public/js/app.js"></script>
 </html>
