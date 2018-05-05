@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/0xTanvir/pp/blog"
 	"github.com/0xTanvir/pp/contest"
 	"github.com/0xTanvir/pp/db"
 	"github.com/0xTanvir/pp/home"
@@ -47,13 +48,14 @@ var runCmd = &cobra.Command{
 		engine.LoadHTMLGlob("templates/**/*.html")
 
 		// Load static file from directory
-		engine.Static("/public","./public")
+		engine.Static("/public", "./public")
 
 		// Initialize all available controller with their service
 		controllers := &server.Controllers{
 			User:    &users.Controller{UserService: &users.Service{DB: dbc}},
 			Home:    &home.Controller{HomeService: &home.Service{DB: dbc}},
 			Contest: &contest.Controller{ContestService: &contest.Service{DB: dbc}},
+			Blog:    &blog.Controller{BlogService: &blog.Service{DB: dbc}},
 		}
 
 		server := &server.Server{

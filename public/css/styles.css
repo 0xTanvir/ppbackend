@@ -163,6 +163,9 @@ a img{
     margin-left: auto;
     margin-right: auto;
 }
+.contest-table{
+    background-color: #fff;
+}
 
 .upcoming-contests {
      background-color: #f3f3f3;

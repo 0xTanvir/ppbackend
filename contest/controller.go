@@ -11,6 +11,11 @@ type Controller struct {
 	ContestService *Service
 }
 
+// GetUI render frontend interface
+func (c *Controller) GetUI(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "contest.html", nil)
+}
+
 // New creates a new Contest
 // @Router /contest [post]
 func (c *Controller) New(ctx *gin.Context) {

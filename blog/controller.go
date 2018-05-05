@@ -8,7 +8,12 @@ import (
 
 // Controller handlers of all contest endPoints
 type Controller struct {
-	PostService *Service
+	BlogService *Service
+}
+
+// GetUI render frontend interface
+func (c *Controller) GetUI(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "blog.html", nil)
 }
 
 // New creates a new Post
@@ -21,7 +26,7 @@ func (c *Controller) New(ctx *gin.Context) {
 		return
 	}
 
-	id, err := c.PostService.Create(post)
+	id, err := c.BlogService.Create(post)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError,
 			gin.H{"error": err.Error()})
