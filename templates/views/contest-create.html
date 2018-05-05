@@ -5,23 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Playground for Programmers.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>PP : Blog</title>
+    <title>PP : Contest</title>
 
     <link rel="stylesheet" href="../../public/css/material.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../../public/js/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="../../public/css/styles.css">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="../../public/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="../../public/css/style.min.css" rel="stylesheet">
-    <link href="../../public/css/custom-styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/custom-styles.css">
 
 </head>
 
@@ -83,56 +74,65 @@
 
         <section class="contest-ranking">
             <div class=" mdl-grid contest-ranking-wrap">
+                <div class="mdl-cell mdl-cell--12-col">
+                   <!-- <div class="mdl-layout-spacer"></div>-->
+                    <div id ="mycard">
 
-                <!--Table-->
-                <table class="table table-striped">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Creating a new contest</h2>
+                            </div>
 
-                    <!--Table head-->
-                    <thead>
-                    <tr>
-                        <th><b>#</b></th>
-                        <th><b>Contest Name</b></th>
-                        <th><b>Category</b></th>
-                        <th><b>Date</b></th>
-                        <th><b>Time</b></th>
-                    </tr>
-                    </thead>
-                    <!--Table head-->
 
-                    <!--Table body-->
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@mdo</td>
-                    </tr>
-                    </tbody>
-                    <!--Table body-->
+                            <div class="mdl-card__supporting-text">
+                                <form action="#">
 
-                </table>
-                <!--Table-->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="title">
+                                        <label class="mdl-textfield__label" for="sample3">Title</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="category">
+                                        <label class="mdl-textfield__label" for="sample3">Category</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="start">
+                                        <label class="mdl-textfield__label" for="sample3">Starting Date</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="end">
+                                        <label class="mdl-textfield__label" for="sample3">Ending Date</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="start-t">
+                                        <label class="mdl-textfield__label" for="sample3">Starting Time</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="end-t">
+                                        <label class="mdl-textfield__label" for="sample3">Ending Time</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="code">
+                                        <label class="mdl-textfield__label" for="sample3">Contest Code</label>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <!-- FAB button with ripple -->
+                        <div id="next">
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                <i class="material-icons">arrow_forward</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <a href="contest-create.html" class="float">
-            <i class="fa fa-plus my-float"></i>
-        </a>
 
 
         <footer class="mdl-mini-footer">
