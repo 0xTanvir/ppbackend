@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Playground for Programmers.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>PP : Contest</title>
+
+    <link rel="stylesheet" href="../../public/css/material.min.css">
+    <script src="../../public/js/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="../../public/css/custom-styles.css">
+
+</head>
+
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="android-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+
+            <div class="devsite-product-name-wrapper">
+                <a  href="">
+                    <img src="../../public/img/logo_round.svg" class="devsite-product-logo" alt="Web">
+                </a>
+                <span class="logo-font text-beside-logo mdl-layout-title">Programmers Playground</span>
+
+            </div>
+
+            <!-- Title -->
+            <!--<span class="logo-font text-beside-logo mdl-layout-title">This is Header</span>-->
+            <!--<div>
+                <span class="android-title mdl-layout-title">
+                    <img class="android-logo-image" src="images/logo_round.svg">
+                </span>
+                <span class="logo-font text-beside-logo mdl-layout-title">This is Header</span>
+            </div>-->
+
+            <div class="mdl-layout-spacer"></div>
+
+            <div class="android-navigation-container">
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="android-navigation mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="index.html">Home</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="contest.html">Contest</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="blog.html">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Questionnaires</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Code Review</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">About</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Sign In</a>
+                </nav>
+            </div>
+
+
+        </div>
+    </header>
+
+    <div class="mdl-layout__drawer  mdl-layout--small-screen-only" >
+        <span class="mdl-layout-title">This is Drawer</span>
+        <nav class=" mdl-navigation">
+            <a class="mdl-navigation__link" href="">Android</a>
+            <a class="mdl-navigation__link" href="">GO</a>
+            <a class="mdl-navigation__link" href="">Algorithm</a>
+            <a class="mdl-navigation__link" href="">Contact</a>
+        </nav>
+    </div>
+
+    <main id="main" role="main" class="mdl-layout__content">
+        <a name="top"></a>
+
+
+        <section class="contest-ranking">
+            <div class=" mdl-grid contest-ranking-wrap">
+                <div class="mdl-cell mdl-cell--12-col">
+                   <!-- <div class="mdl-layout-spacer"></div>-->
+                    <div id ="mycard">
+
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Creating a new contest</h2>
+                            </div>
+
+
+                            <div class="mdl-card__supporting-text">
+                                <form action="#">
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="title">
+                                        <label class="mdl-textfield__label" for="sample3">Title</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="category">
+                                        <label class="mdl-textfield__label" for="sample3">Category</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="start">
+                                        <label class="mdl-textfield__label" for="sample3">Starting Date</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="end">
+                                        <label class="mdl-textfield__label" for="sample3">Ending Date</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="start-t">
+                                        <label class="mdl-textfield__label" for="sample3">Starting Time</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="end-t">
+                                        <label class="mdl-textfield__label" for="sample3">Ending Time</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="code">
+                                        <label class="mdl-textfield__label" for="sample3">Contest Code</label>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <!-- FAB button with ripple -->
+                        <div id="next">
+                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                                <i class="material-icons">arrow_forward</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Programmer's Playground</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
