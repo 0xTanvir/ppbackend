@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../../public/js/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="../../public/css/styles.css">
 
     <!-- Bootstrap core CSS -->
@@ -24,6 +25,20 @@
     <link href="../../public/css/custom-styles.css" rel="stylesheet">
 
 </head>
+<style>
+    body {
+        background-color: #f3f3f3;
+    }
+    #view-source {
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin-right: 140px;
+        margin-bottom: 140px;
+        z-index: 900;
+    }
+</style>
 
 <body>
 
@@ -32,7 +47,7 @@
         <div class="mdl-layout__header-row">
 
             <div class="devsite-product-name-wrapper">
-                <a  href="">
+                <a href="">
                     <img src="../../public/img/logo_round.svg" class="devsite-product-logo" alt="Web">
                 </a>
                 <span class="logo-font text-beside-logo mdl-layout-title">Programmers Playground</span>
@@ -67,7 +82,7 @@
         </div>
     </header>
 
-    <div class="mdl-layout__drawer  mdl-layout--small-screen-only" >
+    <div class="mdl-layout__drawer  mdl-layout--small-screen-only">
         <span class="mdl-layout-title">This is Drawer</span>
         <nav class=" mdl-navigation">
             <a class="mdl-navigation__link" href="">Android</a>
@@ -81,46 +96,47 @@
         <a name="top"></a>
 
 
-        <section class="contest-ranking contest-table">
+        <section class="contest-ranking">
+            <div class="logo-font contest-title mdl-typography--text-center">
+                Upcoming Programming Contest
+
+            </div>
             <div class=" mdl-grid contest-ranking-wrap">
 
                 <!--Table-->
-                <table class="table table-striped">
+                <table class="mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--4dp">
 
                     <!--Table head-->
                     <thead>
                     <tr>
                         <th><b>#</b></th>
-                        <th><b>Contest Name</b></th>
-                        <th><b>Category</b></th>
-                        <th><b>Date</b></th>
-                        <th><b>Time</b></th>
+                        <th class="mdl-data-table__cell--non-numeric">Contest Name</th>
+                        <th><b>Start</b></th>
+                        <th><b>End</b></th>
                     </tr>
                     </thead>
                     <!--Table head-->
 
                     <!--Table body-->
                     <tbody>
-                    <tr>
+                        {{range $index,$item:=. }}
+                        <tr>
+                            <th scope="row">{{$index}}</th>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <a href="{{.Location}}">{{.Summary}}</a>
+                            </td>
+                            <td>{{.Start}}</td>
+                            <td>{{.End}}</td>
+                        </tr>
+                        {{end}}
+                        
+                    <!-- <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@mdo</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <a href="#">Codeforces Round #481 (Div. 1)</a>
+                        </td>
+                        <td>Sat, May 5, 7am</td>
+                        <td>Tue, May 6, 1am</td>
                     </tr>
                     </tbody>
                     <!--Table body-->
@@ -130,11 +146,18 @@
             </div>
         </section>
 
-        <a href="contest-create.html" class="float">
-            <i class="fa fa-plus my-float"></i>
-        </a>
+
 
     </main>
+
+
+    <a href="" id="view-source"
+       data-upgraded=",MaterialButton,MaterialRipple">
+        <button class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+            <i class="material-icons">add</i>
+        </button>
+    </a>
+
     <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
             <div class="mdl-logo">Programmer's Playground</div>
@@ -146,5 +169,7 @@
         </div>
     </footer>
 </div>
+
+
 </body>
 </html>
