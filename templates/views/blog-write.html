@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Playground for Programmers.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>PP : Questionnaires</title>
+    <title>PP : Blog</title>
 
     <link rel="stylesheet" href="../../public/css/material.min.css">
     <!-- Font Awesome -->
@@ -95,7 +95,6 @@
 
                             <!--Asking-->
                             <div class="card mb-3 wow fadeIn">
-                                <div class="card-header font-weight-bold">Ask Your Question</div>
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group">
@@ -103,12 +102,16 @@
                                             <input type="text" class="form-control" id="ttl">
                                         </div>
                                         <div class="form-group">
-                                            <label for="replyFormComment">Question Details</label>
-                                            <textarea class="form-control" id="question" rows="5"></textarea>
+                                            <label for="replyFormComment">Blog Post</label>
+                                            <textarea class="form-control" id="post" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Add Image</label>
+                                            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                                         </div>
 
                                         <div class="text-center mt-4">
-                                            <button class="btn btn-info btn-md" type="submit">Ask</button>
+                                            <button class="btn btn-info btn-md" type="submit">Post</button>
                                         </div>
                                     </form>
 
@@ -125,7 +128,7 @@
                             <!--Card-->
                             <div class="card mb-4 wow fadeIn">
 
-                                <div class="card-header">Recent Questions</div>
+                                <div class="card-header">Recent Articles</div>
 
                                 <!--Card content-->
                                 <div class="card-body">
