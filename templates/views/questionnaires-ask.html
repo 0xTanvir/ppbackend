@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Playground for Programmers.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>PP : Questionnaires</title>
+
+    <link rel="stylesheet" href="../../public/css/material.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../../public/js/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="../../public/css/styles.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../public/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../public/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="android-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+
+            <div class="devsite-product-name-wrapper">
+                <a  href="">
+                    <img src="../../public/img/logo_round.svg" class="devsite-product-logo" alt="Web">
+                </a>
+                <span class="logo-font text-beside-logo mdl-layout-title">Programmers Playground</span>
+
+            </div>
+
+            <!-- Title -->
+            <!--<span class="logo-font text-beside-logo mdl-layout-title">This is Header</span>-->
+            <!--<div>
+                <span class="android-title mdl-layout-title">
+                    <img class="android-logo-image" src="images/logo_round.svg">
+                </span>
+                <span class="logo-font text-beside-logo mdl-layout-title">This is Header</span>
+            </div>-->
+
+            <div class="mdl-layout-spacer"></div>
+
+            <div class="android-navigation-container">
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="android-navigation mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contest">Contest</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Questionnaires</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Code Review</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">About</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Sign In</a>
+                </nav>
+            </div>
+
+
+        </div>
+    </header>
+
+    <div class="mdl-layout__drawer  mdl-layout--small-screen-only" >
+        <span class="mdl-layout-title">This is Drawer</span>
+        <nav class=" mdl-navigation">
+            <a class="mdl-navigation__link" href="">Android</a>
+            <a class="mdl-navigation__link" href="">GO</a>
+            <a class="mdl-navigation__link" href="">Algorithm</a>
+            <a class="mdl-navigation__link" href="">Contact</a>
+        </nav>
+    </div>
+
+    <main id="main" role="main" class="mdl-layout__content">
+        <a name="top"></a>
+
+
+        <!--Main layout-->
+        <main class="mt-5 pt-5">
+            <div class="container">
+
+                <!--Section: Post-->
+                <section class="mt-4">
+
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-8 mb-4">
+
+                            <!--Asking-->
+                            <div class="card mb-3 wow fadeIn">
+                                <div class="card-header font-weight-bold">Ask Your Question</div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="usr">Title</label>
+                                            <input type="text" class="form-control" id="ttl">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="replyFormComment">Question Details</label>
+                                            <textarea class="form-control" id="replyFormComment" rows="5"></textarea>
+                                        </div>
+
+                                        <div class="text-center mt-4">
+                                            <button class="btn btn-info btn-md" type="submit">Ask</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--/.Asking-->
+
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-4 mb-4">
+
+                            <!--Card-->
+                            <div class="card mb-4 wow fadeIn">
+
+                                <div class="card-header">Recent Questions</div>
+
+                                <!--Card content-->
+                                <div class="card-body">
+
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <a href="">
+                                                    <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                                </a>
+                                                Cras sit amet nibh libero, in gravida nulla (...)
+                                            </div>
+                                        </li>
+                                        <li class="media my-4">
+                                            <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="An image">
+                                            <div class="media-body">
+                                                <a href="">
+                                                    <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                                </a>
+                                                Cras sit amet nibh libero, in gravida nulla (...)
+                                            </div>
+                                        </li>
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <a href="">
+                                                    <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                                </a>
+                                                Cras sit amet nibh libero, in gravida nulla (...)
+                                            </div>
+                                        </li>
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <a href="">
+                                                    <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                                </a>
+                                                Cras sit amet nibh libero, in gravida nulla (...)
+                                            </div>
+                                        </li>
+                                        <li class="media my-4">
+                                            <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="An image">
+                                            <div class="media-body">
+                                                <a href="">
+                                                    <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                                </a>
+                                                Cras sit amet nibh libero, in gravida nulla (...)
+                                            </div>
+                                        </li>
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <a href="">
+                                                    <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                                                </a>
+                                                Cras sit amet nibh libero, in gravida nulla (...)
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <!--/.Card-->
+
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+
+                </section>
+                <!--Section: Post-->
+
+            </div>
+        </main>
+        <!--Main layout-->
+
+
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Programmer's Playground</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="../../public/js/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="../../public/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="../../public/js/mdb.min.js"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+</script>
+</body>
+</html>
