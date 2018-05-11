@@ -19,7 +19,6 @@
 }
 .demo-card-wide {
   height: 200px;
- // outline: limegreen 10px solid;
 }
 
 
@@ -38,11 +37,11 @@
 #mycard {
   height: 600px;
   width:100%;
- display:flex;
+  display:flex;
   flex-direction: row;
-  // outline: red solid 10px;
   justify-content: center;
   align-items: center;
+    margin-top: -100px;
 }
 
 .mdl-textfield {
