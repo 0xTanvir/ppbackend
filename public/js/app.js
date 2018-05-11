@@ -2,6 +2,7 @@
  * Created by Tanvir on 2018-04-27.
  */
 
+ // For registration or join
  $(function (){
      var $fname = $("#firstname");
      var $lname = $("#lastname");
@@ -34,4 +35,35 @@
             }
         });
      });
+
+
+    
  });
+
+
+
+ $(function (){
+    var $tittle = $("#tittle");
+    var $description = $("#description");
+
+    $("#btn-post").on('click', function() {
+       var pst = {
+           tittle : $tittle.val(),
+           description : $description.val(),  
+       };
+
+       $.ajax({
+           url: '/blog/create',
+           type: 'POST',
+           data: JSON.stringify(pst),
+           dataType: "json",
+           contentType: "application/json",
+           success: function (response) {
+               // redirect must be defined and must be true
+               if (response.redirect !== undefined && response.redirect) {
+                   window.location.href = response.redirectUrl;
+               }
+           }
+       });
+    });
+});

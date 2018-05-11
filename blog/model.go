@@ -16,10 +16,10 @@ type Comment struct {
 
 // Post is the main struct for blog post
 type Post struct {
-	ID          bson.ObjectId `bson:"_id" json:"id"`
-	Tittle      string        `json:"tittle"`
-	Description string        `json:"description"`
-	Date        time.Time     `json:"date"`
-	Modified    time.Time     `json:"modified"`
-	Comments    []Comment     `json:"comments"`
+	ID          bson.ObjectId `bson:"_id" json:"id" form:"id"`
+	Tittle      string        `json:"tittle" form:"tittle"`
+	Description string        `json:"description" form:"description"`
+	Date        time.Time     `json:"date" form:"date"`
+	Modified    time.Time     `json:"modified" form:"modified"`
+	Comments    []Comment     `json:"comments" form:"comments"`
 }

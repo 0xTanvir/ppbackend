@@ -90,11 +90,16 @@ func (s *Server) Run() error {
 		contest.GET("/:id", s.Controllers.Contest.Get)
 		contest.PUT("/:id", s.Controllers.Contest.Update)
 		contest.DELETE("/:id", s.Controllers.Contest.Delete)
+
 	}
 
 	blog := s.Engine.Group("/blog")
 	{
 		blog.GET("",s.Controllers.Blog.GetUI)
+		blog.GET("/myblog",s.Controllers.Blog.MyBlog)
+
+		blog.GET("/create",s.Controllers.Blog.GetCreateUI)
+		blog.POST("/create",s.Controllers.Blog.New)
 	}
 
 	return s.Engine.Run(fmt.Sprintf("%v:%v", viper.GetString("host"), viper.GetString("port")))

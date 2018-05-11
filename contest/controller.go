@@ -130,7 +130,7 @@ func (c *Controller) Find(ctx *gin.Context) {
 
 // GetUpcomingContest gather all upcoming contest rom db
 // @Router /contest [get]
-func (c *Controller) GetUpcomingContest(ctx *gin.Context) {
+func (c *Controller) CreateContest(ctx *gin.Context) {
 	results, err := c.ContestService.GetUpcomingContest()
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

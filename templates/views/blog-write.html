@@ -96,24 +96,24 @@
                             <!--Asking-->
                             <div class="card mb-3 wow fadeIn">
                                 <div class="card-body">
-                                    <form>
+                                   
                                         <div class="form-group">
                                             <label for="usr">Title</label>
-                                            <input type="text" class="form-control" id="ttl">
+                                            <input type="text" class="form-control" id="tittle">
                                         </div>
                                         <div class="form-group">
                                             <label for="replyFormComment">Blog Post</label>
-                                            <textarea class="form-control" id="post" rows="5"></textarea>
+                                            <textarea class="form-control" id="description" rows="5"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputFile">Add Image</label>
                                             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                                         </div>
 
-                                        <div class="text-center mt-4">
-                                            <button class="btn btn-info btn-md" type="submit">Post</button>
+                                        <div class="text-center mt-4 btn-post">
+                                            <button id="btn-post" class="btn btn-info btn-md" type="submit">Post</button>
                                         </div>
-                                    </form>
+                                    
 
                                 </div>
                             </div>
@@ -237,4 +237,8 @@
     new WOW().init();
 </script>
 </body>
+
+<script src="../../public/js/jquery.js"></script>
+<script src="../../public/js/app.js"></script>
+
 </html>

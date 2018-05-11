@@ -1,6 +1,7 @@
 package blog
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +14,17 @@ type Controller struct {
 
 // GetUI render frontend interface
 func (c *Controller) GetUI(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "blog.html", nil)
+	ctx.HTML(http.StatusOK, "blog-view.html", nil)
+}
+
+// GetCreateUI render frontend interface for blog create
+func (c *Controller) GetCreateUI(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "blog-write.html", nil)
+}
+
+// MyBlog render frontend interface for my blog
+func (c *Controller) MyBlog(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "my-blog.html", nil)
 }
 
 // New creates a new Post
@@ -21,6 +32,9 @@ func (c *Controller) GetUI(ctx *gin.Context) {
 func (c *Controller) New(ctx *gin.Context) {
 	var post Post
 	err := ctx.Bind(&post)
+
+	fmt.Println("This is ",post.Description)
+	
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -33,5 +47,7 @@ func (c *Controller) New(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, gin.H{"id": id.Hex()})
+	ctx.JSON(http.StatusCreated, gin.H{"id": id.Hex(),
+		"redirect":    true,
+		"redirectUrl": "/blog/myblog"})
 }
