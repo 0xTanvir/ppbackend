@@ -1,6 +1,7 @@
 package contest
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +14,14 @@ type Controller struct {
 
 // GetUI render frontend interface
 func (c *Controller) GetUI(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "contest.html", nil)
+
+	evnts,err := c.ContestService.GetEvents()
+
+	if  err != nil {
+		fmt.Println("Error:",err)
+	}
+
+	ctx.HTML(http.StatusOK, "contest.html", evnts)
 }
 
 // New creates a new Contest
