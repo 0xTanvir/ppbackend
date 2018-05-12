@@ -87,8 +87,9 @@ func (s *Server) Run() error {
 	contest := s.Engine.Group("/contest")
 	{
 		contest.GET("", s.Controllers.Contest.GetUI)
-		contest.POST("", s.Controllers.Contest.New)
-		contest.GET("/:id", s.Controllers.Contest.Get)
+		contest.POST("", s.Middleware.ReqAuthUser, s.Controllers.Contest.New)
+		contest.GET("/mycontest", s.Middleware.ReqAuthUser, s.Controllers.Contest.GetMyContest)
+
 		contest.PUT("/:id", s.Controllers.Contest.Update)
 		contest.DELETE("/:id", s.Controllers.Contest.Delete)
 
@@ -99,8 +100,11 @@ func (s *Server) Run() error {
 		blog.GET("",s.Controllers.Blog.GetUI)
 		blog.GET("/myblog",s.Controllers.Blog.MyBlog)
 
-		blog.GET("/create",s.Controllers.Blog.GetCreateUI)
-		blog.POST("/create",s.Controllers.Blog.New)
+		create := blog.Group("/create",s.Middleware.ReqAuthUser)
+		{
+			create.GET("",s.Controllers.Blog.GetCreateUI)
+			create.POST("",s.Controllers.Blog.New)
+		}
 	}
 
 	return s.Engine.Run(fmt.Sprintf("%v:%v", viper.GetString("host"), viper.GetString("port")))

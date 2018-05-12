@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/0xTanvir/pp/auth"
 	"github.com/0xTanvir/pp/db"
 	"github.com/0xTanvir/pp/helpers/events"
 
@@ -27,7 +28,8 @@ const source = "hr"
 
 // Service all logic functionality of contest
 type Service struct {
-	DB *db.DB
+	DB   *db.DB
+	Auth *auth.Service
 }
 
 // GetEvents fetch events from mongo
@@ -131,10 +133,27 @@ func (s *Service) Create(ctstInfo CtstInfo) (*bson.ObjectId, error) {
 		Begin:       ctstResponse.Begin,
 		Length:      ctstResponse.Length,
 		Submissions: *submissions,
+		AID:         s.Auth.GetUserID().Hex(),
 		CtstInfo:    ctstInfo,
 	}
 
 	return &contestData.ID, collection.Insert(contestData)
+}
+
+// GetMyContest is list of contest for user
+func (s *Service) GetMyContest() ([]*Ctst, error) {
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	collection := session.DB("").C(contestCollection)
+	var contest []*Ctst
+
+	err := collection.Find(bson.M{"aid": s.Auth.GetUserID().Hex()}).All(&contest)
+	if err != nil {
+		return nil, err
+	}
+	return contest, err
 }
 
 // Get an Contest by id from the database

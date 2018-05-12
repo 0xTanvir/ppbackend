@@ -52,14 +52,14 @@ var runCmd = &cobra.Command{
 		engine.Static("/public", "./public")
 
 		// Initialize auth service.
-		auth := &auth.Service{LoggedIn:false}
+		auth := &auth.Service{}
 
 		// Initialize all available controller with their service
 		controllers := &server.Controllers{
-			User:    &users.Controller{UserService: &users.Service{DB: dbc}},
-			Home:    &home.Controller{HomeService: &home.Service{DB: dbc}},
-			Contest: &contest.Controller{ContestService: &contest.Service{DB: dbc}},
-			Blog:    &blog.Controller{BlogService: &blog.Service{DB: dbc}},
+			User:    &users.Controller{UserService: &users.Service{DB: dbc, Auth: auth}},
+			Home:    &home.Controller{HomeService: &home.Service{DB: dbc, Auth: auth}},
+			Contest: &contest.Controller{ContestService: &contest.Service{DB: dbc, Auth: auth}},
+			Blog:    &blog.Controller{BlogService: &blog.Service{DB: dbc, Auth: auth}},
 		}
 
 		server := &server.Server{

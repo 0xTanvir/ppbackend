@@ -7,7 +7,6 @@ import (
 // Service to manage userID/accountID auth
 type Service struct {
 	userID    bson.ObjectId
-	LoggedIn bool
 	name string
 }
 
@@ -23,17 +22,6 @@ func (r *Service) SetUserID(id string) bool {
 // GetUserID gets the current user's id
 func (r *Service) GetUserID() bson.ObjectId {
 	return r.userID
-}
-
-// SetLoggedIn sets the current user's logedin status
-func (r *Service) SetLoggedIn(status bool) bool {
-	r.LoggedIn = status
-	return true
-}
-
-// GetLoggedIn gets the current user's id
-func (r *Service) GetLoggedIn() bool {
-	return r.LoggedIn
 }
 
 // SetName sets the current user's role on service

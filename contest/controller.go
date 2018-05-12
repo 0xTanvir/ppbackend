@@ -47,7 +47,23 @@ func (c *Controller) New(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, gin.H{"id": id.Hex()})
+	ctx.JSON(http.StatusOK, gin.H{
+		"id": id.Hex(),
+		"redirect":    true,
+		"redirectUrl": "/contest/"+id.Hex(),
+	})
+}
+
+// GetMyContest a contest by id
+// @Router /contest/mycontest [get]
+func (c *Controller) GetMyContest(ctx *gin.Context) {
+	results, err := c.ContestService.GetMyContest()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, results)
 }
 
 // Get a contest by id

@@ -24,7 +24,14 @@ func (c *Controller) GetCreateUI(ctx *gin.Context) {
 
 // MyBlog render frontend interface for my blog
 func (c *Controller) MyBlog(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "my-blog.html", nil)
+
+	results, err := c.BlogService.GetMyBlog()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, results)
+	//ctx.HTML(http.StatusOK, "my-blog.html", results)
 }
 
 // New creates a new Post

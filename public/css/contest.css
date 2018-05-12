@@ -2,13 +2,23 @@ body {
         background-color: #f3f3f3;
     }
 
-#cCreateButton {
+#cAddButton {
     position: fixed;
     display: block;
     right: 0;
     bottom: 0;
     margin-right: 140px;
     margin-bottom: 140px;
+    z-index: 900;
+}
+
+#cMyList{
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 140px;
+    margin-bottom: 220px;
     z-index: 900;
 }
 

@@ -40,7 +40,6 @@ func (m *Middleware) ReqAuthUser(c *gin.Context) {
 
 	// Store claims in auth service
 	m.Auth.SetUserID(claims["user"].(string))
-	m.Auth.SetLoggedIn(claims["login"].(bool))
 	m.Auth.SetName(claims["name"].(string))
 
 	c.Next()

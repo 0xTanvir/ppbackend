@@ -68,9 +68,13 @@
             </nav>
         </div>
 
-        <button id="cCreateButton" class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored dialog-button">
-                <i class="material-icons">add</i>
-            </button>
+        <button id="cMyList" class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored dialog-button">
+            <i class="material-icons">navigate_next</i>
+        </button>
+
+        <button id="cAddButton" class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored dialog-button">
+            <i class="material-icons">add</i>
+        </button>
 
         <main id="main" role="main" class="mdl-layout__content">
             <a name="top"></a>
@@ -150,17 +154,23 @@
                     contest by that contest ID.
                   </p>
             
-                  <h3 class="mdl-dialog__title">Vjudge Contest ID</h3>
+                  <h3 class="mdl-dialog__title">Vjudge Contest Info</h3>
             
                     <div class="mdl-dialog__content">
-                        <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                            <label class="mdl-textfield__label" for="sample4">Contes ID</label>
+                        <div class="mdl-cell mdl mdl-cell--2-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="vid">
+                            <label class="mdl-textfield__label" for="vid">Contes ID</label>
                             <span class="mdl-textfield__error">Contest ID should be a 6 disit number</span>
                         </div>
-                        <button style="float:right;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                Create
-                            </button>
+                        <div class="mdl-cell mdl mdl-cell--2-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password"id="vpass">
+                            <label class="mdl-textfield__label" for="vpass">Contes password</label>
+                            <span class="mdl-textfield__error">Contest ID should be a 6 disit number</span>
+                        </div>
+                        
+                        <button id="cCreateButton" style="float:right;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            Create
+                        </button>
                     </div>
                 </div>
             </div>

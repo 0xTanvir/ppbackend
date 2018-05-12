@@ -30,6 +30,7 @@ type Ctst struct {
 	Name        string        `json:"title"`
 	Begin       int64         `json:"begin"`
 	Length      int           `json:"length"`
+	AID         string        `bson:"aid" json:"aid"`
 	Submissions []Submission  `json:"submissions"`
 }
 

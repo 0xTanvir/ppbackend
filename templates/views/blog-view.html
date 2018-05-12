@@ -7,34 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>PP : Blog</title>
 
-    <link rel="stylesheet" href="../../public/css/material.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../../public/js/jquery-3.3.1.js"></script>
     <script src="../../public/js/material.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="../../public/css/styles.css">
+    <script src="../../public/js/app.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="../../public/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="../../public/css/style.min.css" rel="stylesheet">
-    <link href="../../public/css/custom-styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- MDL -->
+    <link rel="stylesheet" href="../../public/css/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+
+     <!-- Your custom styles (optional) -->
+     <link rel="stylesheet" href="../../public/css/styles.css">
+     <link  rel="stylesheet" href="../../public/css/blog.css">
+     <link rel="stylesheet" href="../../public/css/custom-styles.css">
 
 </head>
-<style>
-    #add-fab {
-        position: fixed;
-        display: block;
-        right: 0;
-        bottom: 0;
-        margin-right: 140px;
-        margin-bottom: 140px;
-        z-index: 900;
-    }
-</style>
+
 
 <body>
 
@@ -93,7 +88,7 @@
 
 
         <!--Main layout-->
-        <main class="mt-5 pt-5">
+        <main>
             <section class="blog-main-img mdl-typography--text-center">
 
             </section>
@@ -242,20 +237,17 @@
 
     </main>
 
-    <a href="/blog/create" id="add-fab"
-       data-upgraded=",MaterialButton,MaterialRipple">
-        <button class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-            <i class="material-icons">add</i>
-        </button>
-    </a>
+   
+    <button id="bCreateButton" class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+        <i class="material-icons">add</i>
+    </button>
+    
 
     
 </div>
 </body>
 
 <!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="../../public/js/jquery-3.3.1.slim.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="../../public/js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->

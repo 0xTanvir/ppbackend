@@ -37,8 +37,8 @@ $(function () {
         });
     });
 
+    
     // For Login
-
     var $email_in = $("#email_in");
     var $password_in = $("#password_in");
     $("#btn-sign-in").on('click', function () {
@@ -66,6 +66,32 @@ $(function () {
 });
 
 
+// For blog view
+$(function () {
+    // Handle blog create button
+
+    $("#bCreateButton").on('click', function () {
+        $.ajax({
+            url: '/blog/create',
+            type: 'GET',
+            success: function (response) {
+                window.location.href = "/blog/create";
+                // redirect must be defined and must be true
+                // if (response.redirect !== undefined && response.redirect) {
+                //     window.location.href = response.redirectUrl;
+                // }
+            },
+
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("You are not Logge in,Please Sign in");
+                window.location.href = "/join";
+             }
+        });
+    });
+});
+
+
+// For blog post
 $(function () {
     // Handle blog create button
     var $tittle = $("#tittle");
@@ -88,7 +114,11 @@ $(function () {
                 if (response.redirect !== undefined && response.redirect) {
                     window.location.href = response.redirectUrl;
                 }
-            }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("You are not Logge in,Please Sign in");
+                window.location.href = "/join";
+             }
         });
     });
 });
@@ -96,7 +126,7 @@ $(function () {
 
 $(function () {
     // For Contest Create fab button
-    $( "#cCreateButton" ).click(function(){
+    $( "#cAddButton" ).click(function(){
         $( "#cCreateDialog" ).dialog("open")
     });
 
@@ -112,5 +142,48 @@ $(function () {
 
     $( "#cCreateClear" ).click(function(){
         $( "#cCreateDialog" ).dialog("close")
+    });
+
+    // For My Contest List fab button
+    $( "#cMyList" ).click(function(){
+        $.ajax({
+            url: '/contest/mycontest',
+            type: 'GET',
+            success: function (response) {
+                window.location.href = "/contest/mycontest";
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("You are not Logge in,Please Sign in");
+                window.location.href = "/join";
+             }
+        });
+    });
+
+    // For popup create button
+    var $vid = $("#vid");
+    var $vpass = $("#vpass");
+    $( "#cCreateButton" ).click(function(){
+        var vjudge = {
+            vid: $vid.val(),
+            password: $vpass.val()
+        };
+
+        $.ajax({
+            url: '/contest',
+            type: 'POST',
+            data: JSON.stringify(vjudge),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (response) {
+                // redirect must be defined and must be true
+                if (response.redirect !== undefined && response.redirect) {
+                    window.location.href = response.redirectUrl;
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("You are not Logge in,Please Sign in");
+                window.location.href = "/join";
+             }
+        });
     });
 });

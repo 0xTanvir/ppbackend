@@ -4,6 +4,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/0xTanvir/pp/auth"
 	"github.com/0xTanvir/pp/db"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -15,7 +16,8 @@ const userCollection = "users"
 
 // Service all logic functionality of User
 type Service struct {
-	DB *db.DB
+	DB   *db.DB
+	Auth *auth.Service
 }
 
 // Create new user
@@ -33,7 +35,7 @@ func (r *Service) Create(userInfo *UserInfo) (*bson.ObjectId, error) {
 	return &user.ID, collection.Insert(user)
 }
 
-// EmailExist check if a emaol exists
+// EmailExist check if a email exists
 func (r *Service) EmailExist(email string) bool {
 
 	session := r.DB.Clone()
