@@ -79,3 +79,7 @@ body{
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+.imgsize{
+    height: 300px;
+}
