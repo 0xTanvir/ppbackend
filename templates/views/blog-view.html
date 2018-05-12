@@ -64,8 +64,7 @@
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Questionnaires</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Code Review</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">About</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Sign In</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/join">Sign In</a>
                 </nav>
             </div>
 
@@ -98,12 +97,11 @@
                 <section class="text-center">
                     <!--Grid row-->
                     <div class="row mb-4 wow fadeIn">
-
+                    {{range $index,$item:=. }}
                         <!--Grid column-->
                         <div class="col-lg-12 col-md-12 mb-4">
                             <!--Card-->
                             <div class="card">
-
                                 <!--Card image-->
                                 <div class="view overlay imgsize">
                                     <img src="../../public/img/blog-general-img.png" class="card-img-top" alt="">
@@ -112,10 +110,10 @@
                                 <!--Card content-->
                                 <div class="card-body">
                                     <!--Title-->
-                                    <h4 class="card-title">Blog Post Title</h4>
+                                    <h4 class="card-title">{{.Tittle}}</h4>
                                     <!--Text-->
-                                    <p class="card-text">Learn how to create a smart website which learns your user and reacts properly to his behavior.Learn how to create a smart website which learns your user and reacts properly to his behavior.Learn how to create a smart website which learns your user and reacts properly to his behavior.</p>
-                                    <a href="#" target="_blank" class="btn btn-info btn-md">Read
+                                    <p class="card-text">{{.Description}}</p>
+                                    <a href="/blog/post/{{.HID}}" target="_blank" class="btn btn-info btn-md">Read
                                         <i class="fa fa-book ml-2"></i>
                                     </a>
                                 </div>
@@ -123,56 +121,7 @@
                             <!--/.Card-->
                         </div>
                         <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-12 col-md-12 mb-4">
-                            <!--Card-->
-                            <div class="card">
-
-                                <!--Card image-->
-                                <div class="view overlay imgsize">
-                                    <img src="../../public/img/blog-general-img.png" class="card-img-top" alt="">
-                                </div>
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Title-->
-                                    <h4 class="card-title">Blog Post Title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Learn how to create a smart website which learns your user and reacts properly to his behavior.Learn how to create a smart website which learns your user and reacts properly to his behavior.Learn how to create a smart website which learns your user and reacts properly to his behavior.</p>
-                                    <a href="#" target="_blank" class="btn btn-info btn-md">Read
-                                        <i class="fa fa-book ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-12 col-md-12 mb-4">
-                            <!--Card-->
-                            <div class="card">
-
-                                <!--Card image-->
-                                <div class="view overlay imgsize">
-                                    <img src="../../public/img/blog-general-img.png" class="card-img-top" alt="">
-                                </div>
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Title-->
-                                    <h4 class="card-title">Blog Post Title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Learn how to create a smart website which learns your user and reacts properly to his behavior.Learn how to create a smart website which learns your user and reacts properly to his behavior.Learn how to create a smart website which learns your user and reacts properly to his behavior.</p>
-                                    <a href="#" target="_blank" class="btn btn-info btn-md">Read
-                                        <i class="fa fa-book ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <!--Grid column-->
+                    {{end}}
 
 
                     </div>

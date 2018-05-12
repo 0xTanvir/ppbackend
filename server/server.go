@@ -2,7 +2,6 @@ package server
 
 import (
 	"fmt"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -98,14 +97,27 @@ func (s *Server) Run() error {
 	blog := s.Engine.Group("/blog")
 	{
 		blog.GET("",s.Controllers.Blog.GetUI)
-		blog.GET("/myblog",s.Controllers.Blog.MyBlog)
 
+		myblog := blog.Group("/myblog")
+		{
+			myblog.GET("",s.Controllers.Blog.MyBlog)
+		}
 		create := blog.Group("/create",s.Middleware.ReqAuthUser)
 		{
 			create.GET("",s.Controllers.Blog.GetCreateUI)
 			create.POST("",s.Controllers.Blog.New)
 		}
+
+		blogID := blog.Group("/post/:id")
+		{
+			blogID.GET("",s.Controllers.Blog.GetEachBlog)
+		}
+
+
+
 	}
+
+
 
 	return s.Engine.Run(fmt.Sprintf("%v:%v", viper.GetString("host"), viper.GetString("port")))
 }

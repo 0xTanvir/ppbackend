@@ -1,7 +1,6 @@
 package blog
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +13,26 @@ type Controller struct {
 
 // GetUI render frontend interface
 func (c *Controller) GetUI(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "blog-view.html", nil)
+
+	results, err := c.BlogService.GetBlog()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	//ctx.JSON(http.StatusOK, results)
+	ctx.HTML(http.StatusOK, "blog-view.html", results)
+}
+
+// GetEachBlog render Each Blog
+func (c *Controller) GetEachBlog(ctx *gin.Context) {
+	result, err := c.BlogService.GetEachBlog(ctx.Param("id"))
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	ctx.HTML(http.StatusOK, "blog-post.html", result)
+	//ctx.JSON(http.StatusOK, result)
 }
 
 // GetCreateUI render frontend interface for blog create
@@ -30,8 +48,8 @@ func (c *Controller) MyBlog(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	ctx.JSON(http.StatusOK, results)
-	//ctx.HTML(http.StatusOK, "my-blog.html", results)
+	//ctx.JSON(http.StatusOK, results)
+	ctx.HTML(http.StatusOK, "blog-view.html", results)
 }
 
 // New creates a new Post
@@ -39,8 +57,6 @@ func (c *Controller) MyBlog(ctx *gin.Context) {
 func (c *Controller) New(ctx *gin.Context) {
 	var post Post
 	err := ctx.Bind(&post)
-
-	fmt.Println("This is ",post.Description)
 	
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

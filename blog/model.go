@@ -19,6 +19,7 @@ type Post struct {
 	ID          bson.ObjectId `bson:"_id" json:"id" form:"id"`
 	Tittle      string        `json:"tittle" form:"tittle"`
 	AID         string        `bson:"aid" json:"aid"`
+	HID         string        `bson:"hid" json:"hid"`
 	Description string        `json:"description" form:"description"`
 	Date        time.Time     `json:"date" form:"date"`
 	Modified    time.Time     `json:"modified" form:"modified"`
