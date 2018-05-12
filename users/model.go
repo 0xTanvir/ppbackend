@@ -1,6 +1,7 @@
 package users
 
 import (
+	"time"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -25,4 +26,17 @@ type UserInfo struct {
 type User struct {
 	ID       bson.ObjectId `bson:"_id" json:"id"`
 	UserInfo `bson:",inline"`
+}
+
+// Login user
+type Login struct {
+	Email     string `form:"email" json:"email" binding:"required,email"`
+	Password  string `form:"password" json:"password,omitempty"`
+}
+
+// Session contains information related to JWT token headers
+type Ssion struct {
+	ID      *bson.ObjectId
+	Token   string
+	Expiry  time.Time
 }

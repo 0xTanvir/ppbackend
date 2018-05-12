@@ -11,6 +11,7 @@ import (
 	"github.com/0xTanvir/pp/server"
 	"github.com/0xTanvir/pp/users"
 
+	"github.com/0xTanvir/pp/auth"
 	"github.com/gin-gonic/contrib/ginrus"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -50,6 +51,9 @@ var runCmd = &cobra.Command{
 		// Load static file from directory
 		engine.Static("/public", "./public")
 
+		// Initialize auth service.
+		auth := &auth.Service{LoggedIn:false}
+
 		// Initialize all available controller with their service
 		controllers := &server.Controllers{
 			User:    &users.Controller{UserService: &users.Service{DB: dbc}},
@@ -61,6 +65,7 @@ var runCmd = &cobra.Command{
 		server := &server.Server{
 			Engine:      engine,
 			Controllers: controllers,
+			Middleware:  &server.Middleware{Auth: auth},
 		}
 
 		if err := server.Run(); err != nil {

@@ -12,6 +12,7 @@ import (
 type Server struct {
 	Engine      *gin.Engine
 	Controllers *Controllers
+	Middleware *Middleware
 }
 
 // Run server
@@ -55,8 +56,8 @@ func (s *Server) Run() error {
 	// login is used for sign in
 	login := s.Engine.Group("/login")
 	{
-		login.GET("")
-		login.POST("")
+		//login.GET("")
+		login.POST("", s.Controllers.User.Login)
 	}
 
 	auth := s.Engine.Group("/auth")

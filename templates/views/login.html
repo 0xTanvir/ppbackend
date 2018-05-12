@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Auth</title>
 
-    <link rel="stylesheet" href="../../public/css/material.min.css">
+    <script src="../../public/js/jquery-3.3.1.js"></script>
     <script src="../../public/js/material.min.js"></script>
+    <script src="../../public/js/app.js"></script>
+
+    <link rel="stylesheet" href="../../public/css/material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="../../public/css/signin.css">
@@ -38,15 +41,68 @@
         <header class=" mdl-layout__header mdl-layout__header--transparent">
             <!-- Tabs -->
             <div class=" mdl-color--blue-grey-400 mdl-layout__tab-bar mdl-js-ripple-effect">
-                <a href="#fixed-tab-1" class="mdl-typography--font-bold mdl-layout__tab is-active">SIGN UP</a>
-                <a href="#fixed-tab-2" class="mdl-typography--font-bold mdl-layout__tab">SIGN IN</a>
+                <a href="#fixed-tab-1" class="mdl-typography--font-bold mdl-layout__tab is-active">SIGN IN</a>
+                <a href="#fixed-tab-2" class="mdl-typography--font-bold mdl-layout__tab">SIGN UP</a>
             </div>
         </header>
 
 
         <main class=" content-padding mdl-layout__content">
 
-            <section class=" mdl-grid mdl-layout__tab-panel is-active" id="fixed-tab-1">
+            <section class="mdl-grid mdl-layout__tab-panel is-active" id="fixed-tab-1">
+
+                <div class="mdl-cell--12-col mdl-layout-title"><h2 class="mdl-typography--font-light">Log Into Your Account</h2></div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="email" id="email_in" name="email_in">
+                    <label class="mdl-textfield__label" for="email_in" >Email*</label>
+                    <span class="mdl-textfield__error">Email is not valid!</span>
+                </div>
+
+                <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" pattern=".{6,}" id="password_in" name="password_in">
+                    <label class="mdl-textfield__label" for="password_in" >Password*</label>
+                    <span class="mdl-textfield__error">Six or more characters!</span>
+                </div>
+
+                <div class="btn-sign-up">
+                    <button id="btn-sign-in" class="mdl-shadow--8dp mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
+                        Sign In
+                    </button>
+                </div>
+
+                <div><hr></div>
+
+                <div class="mdl-card__supporting-text">
+                    or sign in with one of these services
+                </div>
+
+                <div class="mdl-grid">
+
+                    <div class="mdl-cell--6-col">
+                        <div class="btn-other-sign-up">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                FACEBOOK
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mdl-layout-spacer"></div>
+
+                    <div class="mdl-cell--6-col ">
+                        <div class="btn-other-sign-up">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                GOOGLE
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class=" mdl-grid mdl-layout__tab-panel " id="fixed-tab-2">
                 <div class="mdl-cell--12-col mdl-layout-title"><h2 class="mdl-typography--font-light">Create Your Account</h2></div>
                 <div class="mdl-grid">
                     <div class="mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -178,60 +234,9 @@
             </section>
             
 
-            <form action="/signin" method="POST">
-                <section class="mdl-grid mdl-layout__tab-panel" id="fixed-tab-2">
+           
 
-                    <div class="mdl-cell--12-col mdl-layout-title"><h2 class="mdl-typography--font-light">Log Into Your Account</h2></div>
-
-                    <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="email" id="email_in" name="email">
-                        <label class="mdl-textfield__label" for="email_in" >Email*</label>
-                        <span class="mdl-textfield__error">Email is not valid!</span>
-                    </div>
-
-                    <div class="mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="password" pattern=".{6,}" id="passwor_in" name="password">
-                        <label class="mdl-textfield__label" for="passwor_in" >Password*</label>
-                        <span class="mdl-textfield__error">Six or more characters!</span>
-                    </div>
-
-                    <div class="btn-sign-up">
-                        <button class="mdl-shadow--8dp mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">
-                            Sign In
-                        </button>
-                    </div>
-
-                    <div><hr></div>
-
-                    <div class="mdl-card__supporting-text">
-                        or sign in with one of these services
-                    </div>
-
-                    <div class="mdl-grid">
-
-                        <div class="mdl-cell--6-col">
-                            <div class="btn-other-sign-up">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                                    FACEBOOK
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="mdl-layout-spacer"></div>
-
-                        <div class="mdl-cell--6-col ">
-                            <div class="btn-other-sign-up">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                                    GOOGLE
-                                </button>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-            </form>
+            
 
 
 
@@ -244,6 +249,4 @@
 
 </body>
 
-<script src="../../public/js/jquery-3.3.1.js"></script>
-<script src="../../public/js/app.js"></script>
 </html>
