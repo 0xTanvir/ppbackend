@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+}
+
+/* Disable ugly boxes around images in IE10 */
+a img{
+    border: 0px;
+}
+
+::-moz-selection {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+::selection {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+/**** Material icon resizing ****/
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-96 { font-size: 96px; }
+
+/**** Material icon coloring ****/
+.material-icons.orange600 { color: #FB8C00; }
+.material-icons.blue600 { color: #1E88E5; }
+.material-icons.green600 { color: #43A047; }
+.material-icons.white100 { color: #FFF; }
+
+/*Header style*/
+.main-header {
+    overflow: visible;
+    background-color: white;
+}
+.main-header .mdl-menu__container {
+    z-index: 50;
+    margin: 0 !important;
+}
+.main-header .material-icons {
+    color: #767777 !important;
+}
+.main-header .mdl-layout-title{
+    color: #767777 !important;
+}
+.main-header .mdl-layout__drawer-button {
+    background: transparent;
+    color: #767777;
+}
+.main-header .mdl-navigation__link {
+    color: #4c4c4c;
+    font-weight: 700;
+    font-size: 14px;
+}
+.main-header-name-wrapper {
+    display: -ms-flexbox;
+    display: flex;
+}
+.main-header-logo {
+    height: 32px;
+    width: 32px;
+}
+.main-header-tittle {
+    font-size: 21px;
+    margin: 5px;
+    font-weight: 500;
+}
+
+/*Navigation style*/
+.main-navigation-container {
+    /* Simple hack to make the overflow happen to the left instead... */
+    direction: rtl;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.main-navigation {
+    /* ... and now make sure the content is actually LTR */
+    direction: ltr;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 1000px;
+}
+.main-navigation .mdl-navigation__link {
+    display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+}
+.main-navigation .mdl-navigation__link:hover {
+    border-bottom: 4px solid #663399;
+    color: #663399;
+}
+
+/*Section hero style*/
+.section--hero {
+    position: relative;
+    height: 600px;
+    width: auto;
+    background-color: #f3f3f3;
+    background: url('../../public/img/slide02.jpg') center 30% no-repeat;
+    background-size: cover;
+}
+.section--hero .mdl-button--colored{
+    background: #02b3e4;
+    box-shadow: 8px 10px 20px 0px rgba(46,61,73,0.15);
+}
+.section--hero .mdl-button--colored:hover{
+    background: #02b3e4;
+    box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+}
+
+/*Slogan style*/
+.main-slogan {
+    font-size: 52px;
+    padding-top: 250px;
+}
+.main-slogan-font {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    line-height: 1;
+    color: #767777;
+    font-weight: 500;
+}
+.main-sub-slogan {
+    font-size: 26px;
+    padding-top: 24px;
+}
+
+.expand-fab {
+    position: absolute;
+    right: 20%;
+    bottom: -26px;
+    z-index: 3;
+}
+
+/*Section benefits style*/
+.section--benefits {
+    color: #24292e;
+    padding: 70px 15px 15px 15px;
+    max-width: 1044px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section--benefits p{
+    max-width: 260px;
+    font-size: 16px;
+    margin: 0 auto 30px auto;
+}
+.section--benefits .benefits-title {
+    margin-left: 12px;
+}
+
+/*Section feature style*/
+.section--feature{
+    background-color: #f3f3f3;
+}
+.section--feature .section--feature-wrap{
+    padding: 35px 15px 70px 15px;
+    max-width: 1044px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.explore-upcoming-contest-button{
+    margin-top: 20px;
+}
+.ranking-card-wide.mdl-card {
+    min-width: 512px;
+}
+
+/*Section more style*/
+.section--more{
+    padding: 80px 0;
+    max-width: 1044px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section--more-container .mdl-card {
+    margin: 30px;
+}
+.section--more-container .mdl-card__title-text {
+    color: #a951ed;
+    height: auto;
+    font-size: 32px;
+}
+.section--more-container .mdl-card__media img {
+    width: 100%;
+}
+.section--more-link {
+    text-decoration: none;
+    color: #8bc34a !important;
+}
+.section--more-link:hover {
+    color: #7cb342 !important;
+}
+.section--more-link .material-icons {
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+}
+
+/*Main footer style*/
+.main-footer{
+    background: #F6F6F6;
+}
+.main-footer-tittle{
+    color:#7B7B7B;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+
+
+/**** Mobile layout ****/
+@media (max-height: 900px) {
+    .section--hero {
+        height: 450px;
+    }
+}
+
+@media (max-width: 900px) {
+    .android-more-button {
+        display: none;
+    }
+
+    .main-navigation-container {
+        display: none;
+    }
+
+    .section--hero {
+        height: 350px;
+    }
+
+    .main-slogan {
+        font-size: 26px;
+        margin: 0 16px;
+        padding-top: 24px;
+    }
+    .main-sub-slogan {
+        font-size: 16px;
+        margin: 0 16px;
+        padding-top: 8px;
+    }
+
+    .expand-fab {
+        display: none;
+    }
+
+    /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+         consecutive "+" operators in some cases. Therefore, we need to use both
+         here to cover all the bases. */
+    .main-navigation-container {
+        opacity: 0;
+    }
+}
+
+.gradient-custom {
+    background: #3a7bd5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-gradient(linear, left top, right top, from(#3a6073), to(#3a7bd5));
+    background: -webkit-linear-gradient(left, #3a6073, #3a7bd5);
+    background: -o-linear-gradient(left, #3a6073, #3a7bd5);
+    background: linear-gradient(to right, #3a6073, #3a7bd5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
