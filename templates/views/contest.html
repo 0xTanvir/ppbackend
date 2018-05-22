@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Playground for Programmers.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>PP : Contest</title>
+
+    <script src="../../public/js/jquery-3.3.1.js"></script>
+    <script src="../../public/js/jquery-ui.js"></script>
+    <script src="../../public/js/material.min.js"></script>
+    <script src="../../public/js/app.js"></script>
+
+    <link rel="stylesheet" href="../../public/css/jquery-ui.css">
+
+    <!-- MDL -->
+    <link rel="stylesheet" href="../../public/css/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="../../public/css/contest.css">
+    <link rel="stylesheet" href="../../public/css/custom-styles.css">
+
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="android-header mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+
+                <div class="devsite-product-name-wrapper">
+                    <a href="">
+                        <img src="../../public/img/pp-icon.png" class="devsite-product-logo" alt="Web">
+                    </a>
+                    <span class="logo-font text-beside-logo mdl-layout-title">Programmers Playground</span>
+                </div>
+
+                <div class="mdl-layout-spacer"></div>
+
+                <div class="android-navigation-container">
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="android-navigation mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contest">Contest</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Questionnaires</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Code Review</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/join">Sign In</a>
+                    </nav>
+                </div>
+
+
+            </div>
+        </header>
+
+        <div class="mdl-layout__drawer  mdl-layout--small-screen-only">
+            <span class="mdl-layout-title">This is Drawer</span>
+            <nav class=" mdl-navigation">
+                <a class="mdl-navigation__link" href="">Android</a>
+                <a class="mdl-navigation__link" href="">GO</a>
+                <a class="mdl-navigation__link" href="">Algorithm</a>
+                <a class="mdl-navigation__link" href="">Contact</a>
+            </nav>
+        </div>
+
+        <button id="cMyList" class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored dialog-button">
+            <i class="material-icons">navigate_next</i>
+        </button>
+
+        <button id="cAddButton" class="fab-add mdl-button mdl-js-button mdl-button--fab mdl-button--colored dialog-button">
+            <i class="material-icons">add</i>
+        </button>
+
+        <main id="main" role="main" class="mdl-layout__content">
+            <a name="top"></a>
+
+
+            <section class="contest-ranking">
+                <div class="logo-font contest-title mdl-typography--text-center">
+                    Upcoming Programming Contest
+                </div>
+                <div class=" mdl-grid contest-ranking-wrap">
+
+                    <!--Table-->
+                    <table class="mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--4dp">
+
+                        <!--Table head-->
+                        <thead>
+                            <tr>
+                                <th>
+                                    <b>#</b>
+                                </th>
+                                <th class="mdl-data-table__cell--non-numeric">Contest Name</th>
+                                <th>
+                                    <b>Start</b>
+                                </th>
+                                <th>
+                                    <b>End</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <!--Table head-->
+
+                        <!--Table body-->
+                        <tbody>
+                            {{range $index,$item:=. }}
+                            <tr>
+                                <th scope="row">{{$index}}</th>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <a href="{{.Location}}">{{.Summary}}</a>
+                                </td>
+                                <td>{{.Start}}</td>
+                                <td>{{.End}}</td>
+                            </tr>
+                            {{end}}
+
+                            <!-- <tr>
+                        <th scope="row">1</th>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <a href="#">Codeforces Round #481 (Div. 1)</a>
+                        </td>
+                        <td>Sat, May 5, 7am</td>
+                        <td>Tue, May 6, 1am</td>
+                    </tr>
+                    </tbody>
+                    <!--Table body-->
+
+                    </table>
+                    <!--Table-->
+                </div>
+
+            </section>
+
+            
+            <div id="cCreateDialog" class="mdl-dialog" >
+                <div class="mdl-dialog__actions">
+                  <button id="cCreateClear" type="button" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons md-light">clear</i>
+                  </button>
+                  <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons md-light">more_vert</i>
+                  </button>
+                </div>
+            
+                <div class="mdl-dialog__content">
+                  <p>
+                    If you want to create new contest, then please first create a
+                    <a href="https://vjudge.net/contest">new contest at vjudge</a> with your problem and then put that 6 digit contest id here Or you can track your previouse
+                    contest by that contest ID.
+                  </p>
+            
+                  <h3 class="mdl-dialog__title">Vjudge Contest Info</h3>
+            
+                    <div class="mdl-dialog__content">
+                        <div class="mdl-cell mdl mdl-cell--2-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="vid">
+                            <label class="mdl-textfield__label" for="vid">Contes ID</label>
+                            <span class="mdl-textfield__error">Contest ID should be a 6 disit number</span>
+                        </div>
+                        <div class="mdl-cell mdl mdl-cell--2-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password"id="vpass">
+                            <label class="mdl-textfield__label" for="vpass">Contes password</label>
+                            <span class="mdl-textfield__error">Contest ID should be a 6 disit number</span>
+                        </div>
+                        
+                        <button id="cCreateButton" style="float:right;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+             
+
+        </main>
+
+        
+
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Programmer's Playground</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy & Terms</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+        
+
+    </div>
+
+</body>
+
+</html>

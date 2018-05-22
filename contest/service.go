@@ -3,6 +3,7 @@ package contest
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
@@ -11,7 +12,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/0xTanvir/pp/auth"
 	"github.com/0xTanvir/pp/db"
+	"github.com/0xTanvir/pp/helpers/events"
 
 	"github.com/spf13/viper"
 	"gopkg.in/mgo.v2"
@@ -20,10 +23,72 @@ import (
 
 const scheme = "https"
 const contestCollection = "contests"
+const eventsCollection = "events"
+const source = "hr"
 
 // Service all logic functionality of contest
 type Service struct {
-	DB *db.DB
+	DB   *db.DB
+	Auth *auth.Service
+}
+
+// GetEvents fetch events from mongo
+func (s *Service) GetEvents() ([]events.Event, error) {
+
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+	collection := session.DB("").C(eventsCollection)
+
+	// Get the collection from database
+	var ed EventData
+	err := collection.Find(bson.M{"source": "hr"}).One(&ed)
+	if err != nil {
+		return nil, err
+	}
+
+	expiresAt := ed.UpdatedAt.Add(time.Hour * 6).Sub(time.Now())
+	fmt.Println(expiresAt)
+
+	// If events get 6 hour old then update the events from cloud calendar
+	if expiresAt < 0 {
+		fmt.Println("Then update the db from hr")
+		evnts, err := s.updateEvents()
+		if err != nil {
+			return nil, err
+		}
+		return evnts, nil
+	}
+
+	// Now return the list of events
+	return ed.Events, nil
+}
+
+// updateEvents update event from cloud calendar
+func (s *Service) updateEvents() ([]events.Event, error) {
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+	collection := session.DB("").C(eventsCollection)
+
+	evnts, err := events.GetUpcomingEvents()
+	if err != nil {
+		return nil, err
+	}
+
+	// Update eventes in database
+	err = collection.Update(bson.M{"source": "hr"}, bson.M{
+		"$set": bson.M{
+			"updatedat": time.Now(),
+			"events":    *evnts,
+		},
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return *evnts, nil
 }
 
 // exist check existence of that query.
@@ -68,10 +133,27 @@ func (s *Service) Create(ctstInfo CtstInfo) (*bson.ObjectId, error) {
 		Begin:       ctstResponse.Begin,
 		Length:      ctstResponse.Length,
 		Submissions: *submissions,
+		AID:         s.Auth.GetUserID().Hex(),
 		CtstInfo:    ctstInfo,
 	}
 
 	return &contestData.ID, collection.Insert(contestData)
+}
+
+// GetMyContest is list of contest for user
+func (s *Service) GetMyContest() ([]*Ctst, error) {
+	session := s.DB.Clone()
+	defer session.Close()
+	session.SetSafe(&mgo.Safe{})
+
+	collection := session.DB("").C(contestCollection)
+	var contest []*Ctst
+
+	err := collection.Find(bson.M{"aid": s.Auth.GetUserID().Hex()}).All(&contest)
+	if err != nil {
+		return nil, err
+	}
+	return contest, err
 }
 
 // Get an Contest by id from the database

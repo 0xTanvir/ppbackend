@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/0xTanvir/pp/blog"
 	"github.com/0xTanvir/pp/contest"
 	"github.com/0xTanvir/pp/home"
 	"github.com/0xTanvir/pp/users"
@@ -12,4 +13,5 @@ type Controllers struct {
 	User    *users.Controller
 	Home    *home.Controller
 	Contest *contest.Controller
+	Blog    *blog.Controller
 }

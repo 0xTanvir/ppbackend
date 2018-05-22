@@ -1,16 +1,24 @@
 package home
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
 
+	"github.com/gin-gonic/gin"
+)
+
+// Controller is a Homeservice controller
 type Controller struct {
 	HomeService *Service
 }
 
-func (c *Controller) New(ctx *gin.Context) {
+// GetHomeUI just an example
+func (c *Controller) GetHomeUI(ctx *gin.Context) {
 
-	msg := c.HomeService.GetUI()
+	//msg := c.HomeService.GetUI()
+	ctx.HTML(http.StatusOK, "index.html", nil)
+}
 
-	ctx.JSON(200, gin.H{
-		"message": msg,
-	})
+// GetRegistationUI just an example
+func (c *Controller) GetRegistationUI(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "login.html", nil)
 }
