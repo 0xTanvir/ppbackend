@@ -1,0 +1,19 @@
+{{define "nav_auth"}}
+<button id="demo-menu-lower-right"
+        class="mdl-button mdl-js-button mdl-button--icon">
+    <i class="material-icons">person</i>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+    for="demo-menu-lower-right">
+    <li class="mdl-menu__item">My Contest</li>
+    <li class="mdl-menu__item">My Blog</li>
+    <li class="mdl-menu__item">Sign Out</li>
+</ul>
+{{end}}
+
+{{define "nav_public"}}
+<a class="mdl-navigation__link mdl-typography--text-uppercase" href="/join">Sign In</a>
+<button class="main-header-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+    Get Started
+</button>
+{{end}}

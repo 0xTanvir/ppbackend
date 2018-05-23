@@ -3,7 +3,6 @@ package contest
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
@@ -48,11 +47,9 @@ func (s *Service) GetEvents() ([]events.Event, error) {
 	}
 
 	expiresAt := ed.UpdatedAt.Add(time.Hour * 6).Sub(time.Now())
-	fmt.Println(expiresAt)
 
 	// If events get 6 hour old then update the events from cloud calendar
 	if expiresAt < 0 {
-		fmt.Println("Then update the db from hr")
 		evnts, err := s.updateEvents()
 		if err != nil {
 			return nil, err

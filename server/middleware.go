@@ -13,6 +13,8 @@ type Middleware struct {
 	Auth *auth.Service
 }
 
+
+
 // ReqAuthUser returns middleware which requires authenticated user for request.
 func (m *Middleware) ReqAuthUser(c *gin.Context) {
 

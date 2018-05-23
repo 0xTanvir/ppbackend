@@ -95,8 +95,8 @@ a img{
     border-bottom: 4px solid transparent;
 }
 .main-navigation .mdl-navigation__link:hover {
-    border-bottom: 4px solid #663399;
-    color: #663399;
+    border-bottom: 4px solid #2196F3;
+    color: #2196F3;
 }
 
 /*Section hero style*/
