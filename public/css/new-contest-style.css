@@ -1,0 +1,46 @@
+
+.ctst-container{
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.card-container{
+    box-shadow: 0 2px 4px 0 rgba(46, 61, 73, 0.16);
+    margin-bottom: 2rem;
+    background-color: white;
+    transition: box-shadow 0.2s ease;
+}
+.card-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(46, 61, 73, 0.16);
+}
+
+.ctst-clk{
+    display: inline;
+}
+.ctst-desc{
+    padding:0 !important;
+}
+
+.fab-add-ctst{
+    box-shadow: 8px 10px 20px 0px rgba(46,61,73,0.15);
+}
+.fab-add-ctst:hover{
+    box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+}
+
+#bCreateButton {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 6%;
+    margin-bottom: 6%;
+    z-index: 900;
+}
+
+@media (max-width: 900px) {
+    .ctst-clk{
+        font-size: 36px;
+    }
+}
