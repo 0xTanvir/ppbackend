@@ -1,6 +1,7 @@
 package contest
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -9,6 +10,18 @@ import (
 // Controller handlers of all contest endPoints
 type Controller struct {
 	ContestService *Service
+}
+
+// GetUI render frontend interface
+func (c *Controller) GetUI(ctx *gin.Context) {
+
+	evnts,err := c.ContestService.GetEvents()
+
+	if  err != nil {
+		fmt.Println("Error:",err)
+	}
+
+	ctx.HTML(http.StatusOK, "contest.html", evnts)
 }
 
 // New creates a new Contest
@@ -34,7 +47,23 @@ func (c *Controller) New(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, gin.H{"id": id.Hex()})
+	ctx.JSON(http.StatusOK, gin.H{
+		"id": id.Hex(),
+		"redirect":    true,
+		"redirectUrl": "/contest/"+id.Hex(),
+	})
+}
+
+// GetMyContest a contest by id
+// @Router /contest/mycontest [get]
+func (c *Controller) GetMyContest(ctx *gin.Context) {
+	results, err := c.ContestService.GetMyContest()
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, results)
 }
 
 // Get a contest by id
@@ -117,7 +146,7 @@ func (c *Controller) Find(ctx *gin.Context) {
 
 // GetUpcomingContest gather all upcoming contest rom db
 // @Router /contest [get]
-func (c *Controller) GetUpcomingContest(ctx *gin.Context) {
+func (c *Controller) CreateContest(ctx *gin.Context) {
 	results, err := c.ContestService.GetUpcomingContest()
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

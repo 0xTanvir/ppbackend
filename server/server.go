@@ -2,7 +2,6 @@ package server
 
 import (
 	"fmt"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -12,6 +11,7 @@ import (
 type Server struct {
 	Engine      *gin.Engine
 	Controllers *Controllers
+	Middleware *Middleware
 }
 
 // Run server
@@ -41,19 +41,26 @@ func (s *Server) Run() error {
 	// ============================================================
 	// API endpoints
 
-	s.Engine.GET("", s.Controllers.Home.New) //Render ui for user
+	s.Engine.GET("", s.Controllers.Home.GetHomeUI) //Render ui for user
 
-	// Non-authenticated route
+	// -----------Non-authenticated route------------
+
+	// join is used for sign up or regestation
 	join := s.Engine.Group("/join")
 	{
-		join.GET("") //Render ui for user
+		join.GET("", s.Controllers.Home.GetRegistationUI) //Render ui for user
 		join.POST("", s.Controllers.User.New)
+	}
+
+	// login is used for sign in
+	login := s.Engine.Group("/login")
+	{
+		//login.GET("")
+		login.POST("", s.Controllers.User.Login)
 	}
 
 	auth := s.Engine.Group("/auth")
 	{
-		auth.GET("/login") //Render ui for user
-		auth.POST("/login")
 		auth.GET("/refresh")
 
 		// Password management group
@@ -78,8 +85,39 @@ func (s *Server) Run() error {
 
 	contest := s.Engine.Group("/contest")
 	{
-		contest.POST("", s.Controllers.Contest.New)
+		contest.GET("", s.Controllers.Contest.GetUI)
+		contest.POST("", s.Middleware.ReqAuthUser, s.Controllers.Contest.New)
+		contest.GET("/mycontest", s.Middleware.ReqAuthUser, s.Controllers.Contest.GetMyContest)
+
+		contest.PUT("/:id", s.Controllers.Contest.Update)
+		contest.DELETE("/:id", s.Controllers.Contest.Delete)
+
 	}
+
+	blog := s.Engine.Group("/blog")
+	{
+		blog.GET("",s.Controllers.Blog.GetUI)
+
+		myblog := blog.Group("/myblog")
+		{
+			myblog.GET("",s.Controllers.Blog.MyBlog)
+		}
+		create := blog.Group("/create",s.Middleware.ReqAuthUser)
+		{
+			create.GET("",s.Controllers.Blog.GetCreateUI)
+			create.POST("",s.Controllers.Blog.New)
+		}
+
+		blogID := blog.Group("/post/:id")
+		{
+			blogID.GET("",s.Controllers.Blog.GetEachBlog)
+		}
+
+
+
+	}
+
+
 
 	return s.Engine.Run(fmt.Sprintf("%v:%v", viper.GetString("host"), viper.GetString("port")))
 }

@@ -1,6 +1,12 @@
 package contest
 
-import "gopkg.in/mgo.v2/bson"
+import (
+	"time"
+
+	"github.com/0xTanvir/pp/helpers/events"
+
+	"gopkg.in/mgo.v2/bson"
+)
 
 // CtstInfo contains string parameters of a contest
 type CtstInfo struct {
@@ -24,6 +30,7 @@ type Ctst struct {
 	Name        string        `json:"title"`
 	Begin       int64         `json:"begin"`
 	Length      int           `json:"length"`
+	AID         string        `bson:"aid" json:"aid"`
 	Submissions []Submission  `json:"submissions"`
 }
 
@@ -42,4 +49,11 @@ type QueryFilter struct {
 	Query    string `form:"q"`
 	Page     int    `form:"page"`
 	PageSize int    `form:"size"`
+}
+
+// EventData contains upcomming event
+type EventData struct {
+	Source    string         `json:"source"`
+	UpdatedAt time.Time      `json:"updatedat"`
+	Events    []events.Event `json:"events"`
 }
